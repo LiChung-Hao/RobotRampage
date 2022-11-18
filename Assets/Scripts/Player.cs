@@ -97,6 +97,15 @@ public class Player : MonoBehaviour
             gameUI.SetAmmoText(ammo.GetAmmo(Constants.Shotgun));
         }
     }
+    private void pickupRedShotgunAmmo()
+    {
+        ammo.AddAmmo(Constants.RedShotgun, 10);
+        gameUI.SetPickUpText("RedShotgun ammo picked up + 10 ammo");
+        if (gunEquipper.GetActiveWeapon().tag == Constants.RedShotgun)
+        {
+            gameUI.SetAmmoText(ammo.GetAmmo(Constants.RedShotgun));
+        }
+    }
 
     public void PickUpItem(int pickupType)
     {
@@ -116,6 +125,9 @@ public class Player : MonoBehaviour
                 break;
             case Constants.PickUpShotgunAmmo:
                 pickupShotgunAmmo();
+                break;
+            case Constants.PickUpRedShotgunAmmo:
+                pickupRedShotgunAmmo();
                 break;
             default:
                 Debug.LogError("Bad pickup type passed" + pickupType);

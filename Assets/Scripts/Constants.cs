@@ -10,6 +10,7 @@ public class Constants : MonoBehaviour
     // Gun Types
     public const string Pistol = "Pistol";
     public const string Shotgun = "Shotgun";
+    public const string RedShotgun = "RedShotgun";
     public const string AssaultRifle = "AssaultRifle";
     // Robot Types
     public const string RedRobot = "RedRobot";
@@ -20,17 +21,19 @@ public class Constants : MonoBehaviour
     public const int PickUpPistolAmmo = 1;
     public const int PickUpAssaultRifleAmmo = 2;
     public const int PickUpShotgunAmmo = 3;
-    public const int PickUpHealth = 4;
-    public const int PickUpArmor = 5;
+    public const int PickUpRedShotgunAmmo = 4;
+    public const int PickUpHealth = 5;
+    public const int PickUpArmor = 6;
     // Misc
     public const string Game = "Game";
     public const float CameraDefaultZoom = 60f;
 
-    public static readonly int[] AllPickupTypes = new int[5]
+    public static readonly int[] AllPickupTypes = new int[6]
     {
          PickUpPistolAmmo,
          PickUpAssaultRifleAmmo,
          PickUpShotgunAmmo,
+         PickUpRedShotgunAmmo,
          PickUpHealth,
          PickUpArmor
     };
