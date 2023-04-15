@@ -6,6 +6,9 @@ public class Robot : MonoBehaviour
 {
     [SerializeField]
     private string robotType;
+    [SerializeField] Material DissolveMaterial;
+    private float dissolveValue;
+
     public int health;
     public int range;
     public float fireRate;
@@ -32,6 +35,14 @@ public class Robot : MonoBehaviour
         isDead = false;
         agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
+        DissolveMaterial.SetFloat("_Slipping_Value", 0);
+    }
+    private void FixedUpdate()
+    {
+        if (isDead)
+        {
+            DeadBodyFadeOut();
+        }
     }
     // Update is called once per frame
     void Update()
@@ -39,6 +50,7 @@ public class Robot : MonoBehaviour
         // 2
         if (isDead)
         {
+
             return;
         }
         // 3
@@ -89,7 +101,13 @@ public class Robot : MonoBehaviour
     // 2
     IEnumerator DestroyRobot()
     {
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(2.5f);
         Destroy(gameObject);
+    }
+
+    void DeadBodyFadeOut()
+    {
+        DissolveMaterial.SetFloat("_Slipping_Value", dissolveValue);
+        dissolveValue += (float) 0.3 * Time.deltaTime;
     }
 }
